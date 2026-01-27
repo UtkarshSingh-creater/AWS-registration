@@ -1,6 +1,13 @@
 
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+  margin: 0;
+}
+
 .page {
-  min-height: 100vh;
+  min-height: 100svh; 
   background: radial-gradient(
       circle at top right,
       rgba(140, 82, 255, 0.35),
@@ -8,8 +15,8 @@
     ),
     linear-gradient(135deg, #12002f, #2b0066, #3a007a);
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 24px 12px; 
   font-family: "Inter", system-ui, sans-serif;
 }
 
@@ -22,6 +29,7 @@
   padding: 32px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 0 40px rgba(140, 82, 255, 0.35);
+  margin-top: 32px; 
 }
 
 .title {
@@ -178,7 +186,7 @@
 @media (max-width: 480px) {
   .card {
     padding: 22px;
-    margin: 12px;
+    margin-top: 24px;
   }
 
   .title {
