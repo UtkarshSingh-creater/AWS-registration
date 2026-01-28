@@ -18,23 +18,30 @@ body {
   background: radial-gradient(circle at top, #5a189a, #240046);
 }
 
-/* ===== PAGE LOCK ===== */
+/* ===== PAGE (NO SCROLL, NO SHIFT) ===== */
 .page {
   position: fixed;
   inset: 0;
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
+  height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+
   overflow: hidden;
 }
 
 /* ===== CARD ===== */
 .card {
-  width: 100%;
+  width: calc(100vw - 24px);
   max-width: 420px;
+
   padding: 38px 28px;
   border-radius: 22px;
 
@@ -52,7 +59,6 @@ body {
   color: #ffffff;
 
   overflow: hidden;
-  contain: layout paint;
 }
 
 /* ===== HEADER ===== */
@@ -211,7 +217,9 @@ button:hover {
 
 /* ===== SUCCESS CARD ===== */
 .success-card {
+  width: calc(100vw - 24px);
   max-width: 360px;
+
   padding: 36px;
   border-radius: 22px;
 
@@ -228,7 +236,6 @@ button:hover {
   box-shadow: 0 26px 52px rgba(90,24,154,.45);
 
   overflow: hidden;
-  contain: layout paint;
 }
 
 .success-email {
@@ -276,11 +283,10 @@ button:hover {
   }
 }
 
-/* ===== HARD SCROLLBAR KILL ===== */
-*::-webkit-scrollbar {
+/* ===== SCROLLBAR HARD KILL ===== */
+::-webkit-scrollbar {
   width: 0;
   height: 0;
-  display: none;
 }
 
 * {
