@@ -18,7 +18,7 @@ body {
   background: radial-gradient(circle at top, #5a189a, #240046);
 }
 
-/* ===== PAGE (NO SCROLL, NO SHIFT) ===== */
+/* ===== PAGE (NO PAGE SCROLL) ===== */
 .page {
   position: fixed;
   inset: 0;
@@ -41,6 +41,7 @@ body {
 .card {
   width: calc(100vw - 24px);
   max-width: 420px;
+  max-height: 100%;
 
   padding: 38px 28px;
   border-radius: 22px;
@@ -58,7 +59,8 @@ body {
 
   color: #ffffff;
 
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 /* ===== HEADER ===== */
@@ -219,6 +221,7 @@ button:hover {
 .success-card {
   width: calc(100vw - 24px);
   max-width: 360px;
+  max-height: 100%;
 
   padding: 36px;
   border-radius: 22px;
@@ -235,7 +238,8 @@ button:hover {
 
   box-shadow: 0 26px 52px rgba(90,24,154,.45);
 
-  overflow: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .success-email {
@@ -283,12 +287,14 @@ button:hover {
   }
 }
 
-/* ===== SCROLLBAR HARD KILL ===== */
-::-webkit-scrollbar {
+/* ===== SCROLLBAR HIDE (VISUAL ONLY) ===== */
+.card::-webkit-scrollbar,
+.success-card::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-* {
+.card,
+.success-card {
   scrollbar-width: none;
 }
