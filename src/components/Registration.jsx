@@ -83,7 +83,16 @@ export default function Registration() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+            fullName: formData.name,
+            studentNo: formData.studentNo,
+            collegeEmail: formData.email,
+            phoneNo: formData.phone,
+            year: formData.year,
+            branch: formData.branch,
+            section: formData.section,
+          }),
+        
       });
 
       const data = await response.json();
