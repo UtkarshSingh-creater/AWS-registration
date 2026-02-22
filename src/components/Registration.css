@@ -36,7 +36,7 @@ body {
       rgba(120, 60, 200, 0.45),
       rgba(80, 20, 140, 0.55)
     ),
-    url("../assets/cloud-bg.jpg") center / cover no-repeat;
+    url("../assets/cloud-bg1.jpg") center / cover no-repeat;
   box-shadow:
     0 26px 52px rgba(90, 24, 154, 0.45),
     inset 0 0 34px rgba(255, 255, 255, 0.06);
