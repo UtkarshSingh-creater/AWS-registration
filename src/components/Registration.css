@@ -153,7 +153,7 @@ button {
       rgba(120, 60, 200, 0.5),
       rgba(80, 20, 140, 0.6)
     ),
-    url("../assets/cloud-bg.jpg") center 18% / cover no-repeat;
+    url("../assets/cloud-bg1.jpg") center 18% / cover no-repeat;
   box-shadow: 0 24px 48px rgba(90,24,154,.5);
   color: #ffffff;
   text-align: center;

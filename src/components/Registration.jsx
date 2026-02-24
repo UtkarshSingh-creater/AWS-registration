@@ -25,6 +25,8 @@ export default function Registration() {
     year: "",
     branch: "",
     section: "",
+     gender: "",
+  residence: "", 
   });
 
   const [errors, setErrors] = useState({});
@@ -88,6 +90,8 @@ export default function Registration() {
 
     if (!formData.year) e.year = "Select year";
     if (!formData.section) e.section = "Select section";
+    if (!formData.gender) e.gender = "Select gender";
+if (!formData.residence) e.residence = "Select residence";
 
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -112,6 +116,8 @@ export default function Registration() {
           year: formData.year,
           branch: formData.branch,
           section: formData.section,
+          gender: formData.gender,
+isHosteller: formData.residence === "Hosteller",
         }),
       });
 
@@ -175,11 +181,18 @@ export default function Registration() {
       const data = await res.json();
 
       if (res.ok) {
-        showMessage("OTP resent successfully", "success");
-        setCooldown(30);
-      } else {
-        showMessage(data.message || "Resend failed", "error");
-      }
+  setOtpSent(true);
+  showMessage("OTP sent to your email", "success");
+  setCooldown(30);
+} else {
+
+  if (data.message === "Already registered and verified") {
+    showMessage("You are already registered ✅", "success");
+    return;
+  }
+
+  showMessage(data.message || "Registration failed", "error");
+}
     } catch {
       showMessage("Server error while resending OTP", "error");
     } finally {
@@ -286,6 +299,26 @@ export default function Registration() {
               )}
           </select>
           {errors.section && <span className="error">{errors.section}</span>}
+          <select
+  value={formData.gender}
+  onChange={e => setFormData({ ...formData, gender: e.target.value })}
+>
+  <option value="">Gender</option>
+  <option>Male</option>
+  <option>Female</option>
+  <option>Other</option>
+</select>
+{errors.gender && <span className="error">{errors.gender}</span>}
+
+<select
+  value={formData.residence}
+  onChange={e => setFormData({ ...formData, residence: e.target.value })}
+>
+  <option value="">Residence</option>
+  <option>Day Scholar</option>
+  <option>Hosteller</option>
+</select>
+{errors.residence && <span className="error">{errors.residence}</span>}
 
           {otpSent && (
             <>
